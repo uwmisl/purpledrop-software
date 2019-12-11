@@ -10,6 +10,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install cross
-      run: cargo install cross
+      run: curl -LSfs https://japaric.github.io/trust/install.sh | sh -s -- --git rust-embedded/cross
+    - name: Install fpm
+      run: gem install --no-document fpm
     - name: Build Package
       run: make package
