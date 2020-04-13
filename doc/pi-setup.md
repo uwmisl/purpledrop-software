@@ -19,6 +19,7 @@ Also, open `config.txt` and edit/uncomment it so that the following lines are th
 dtparam=i2c_arm=on
 dtparam=spi=on
 dtoverlay=pwm-2chan
+gpio=12=a0
 ```
 
 Make sure to also enable PWM for regular users (without `sudo`) according to these [instructions][pwm].
