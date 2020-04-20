@@ -29,7 +29,7 @@
     "eslint": "^6.7.2",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-mithril": "^0.1.1",
-    "file-loader": "^4.3.0",
+    "file-loader": "^5.0.2",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
@@ -47,12 +47,14 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2",
-    "webpack-visualizer-plugin": "^0.1.11"
+    "webpack-visualizer-plugin": "^0.1.11",
+    "webpack-shell-plugin-next": "^1.1.5",
+    "mocker-api": "^1.9.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.7.6",
     "mithril": "^2.0.4",
-    "mocker-api": "^1.9.0",
+    "protobufjs": "^6.8.8",
     "regenerator-runtime": "^0.13.3",
     "simple-jsonrpc-js": "^1.0.1"
   },

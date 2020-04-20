@@ -4,7 +4,7 @@ import PageLayout from './components/page-layout';
 import IndexPage from './pages/landing-page';
 import Splash from './components/splash-loader/index';
 import MaintenancePage from './components/maintenance-layout/index';
-import BoardConfig from '../models/BoardConfig';
+import Pd from '../models/Pd';
 
 function loadSpinner() {
     let $splashDiv = document.getElementById('splash');
@@ -23,19 +23,14 @@ function hideSpinner() {
     }
 }
 
-const Routes = {
-    '/splash': {
-        render: function() {
-            return m(PageLayout, m(Splash));
-        },
-    },
-    '/index': {
+const index_page = (compact) => {
+    return {
         onmatch() {
             // Show Loader until the promise has been resolved or rejected.
             loadSpinner();
             return new Promise((resolve /*, reject*/) => {
                 //Fetch all necessary data here
-                BoardConfig.loadConfig().then(() => resolve());
+                Pd.init().then(() => resolve());
                 // setTimeout(function() {
                 //     //m.render($root, null);
                 //     resolve();
@@ -52,9 +47,19 @@ const Routes = {
                 //If onmatch returns a component or a promise that resolves to a component, comes here.
                 return vnode;
             }
-            return m(PageLayout, m(IndexPage));
+            return m(PageLayout, m(IndexPage, {compact: compact}));
+        },
+    };
+};
+
+const Routes = {
+    '/splash': {
+        render: function() {
+            return m(PageLayout, m(Splash));
         },
     },
+    '/index': index_page(false),
+    '/compact': index_page(true),
 };
 
 const DefaultRoute = '/index';

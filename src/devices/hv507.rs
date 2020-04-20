@@ -9,18 +9,18 @@ use rppal::{
     pwm::{self, Pwm},
 };
 
-use crate::error::{Error, Result};
+use crate::error::{Error, HardwareError, Result};
 
 const N_PINS: usize = 128;
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize)]
 pub struct Settings {
     pub frequency: f64,
     pub pins: Pins,
     pub default_polarity: DefaultLevel,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize)]
 pub struct Pins {
     pub blank: u8,
     pub latch_enable: u8,
@@ -29,7 +29,7 @@ pub struct Pins {
     pub polarity_pwm_channel: u8,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum DefaultLevel {
     Low,
@@ -51,7 +51,7 @@ impl Settings {
         let chan = match self.pins.polarity_pwm_channel {
             0 => pwm::Channel::Pwm0,
             1 => pwm::Channel::Pwm1,
-            n => return Err(Error::InvalidPwmChannel(n)),
+            n => return Err(Error::new(HardwareError::InvalidPwmChannel(n))),
         };
         let enabled = true;
         let pol = match self.default_polarity {
