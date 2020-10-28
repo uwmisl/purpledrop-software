@@ -1,5 +1,7 @@
 # PurpleDrop
 
+**This software is for older revisions of the purpledrop, rev 5 and earlier**
+
 This holds the software for PurpleDrop, a digital microfluidic device.
 The hardware can be found [here](https://github.com/uwmisl/purpledrop).
 
