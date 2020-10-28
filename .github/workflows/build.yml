@@ -11,8 +11,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Install protoc
       run: sudo apt-get install protobuf-compiler
-    - name: Install libssl
-      run: sudo apt-get install libssl-dev
     - name: Cache cargo bin
       uses: actions/cache@v1
       with:
@@ -20,7 +18,7 @@ jobs:
         key: ${{ runner.os }}-cargo-bin
     - name: Install cross
       # run: curl -LSfs https://japaric.github.io/trust/install.sh | sh -s -- --git rust-embedded/cross --force
-      run: which cross || cargo install cross
+      run: which cross || cargo install --version 0.1.16 cross
     - name: Install cargo deb
       run: which cargo-deb || cargo install cargo-deb
     - name: Build Package
