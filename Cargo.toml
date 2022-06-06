@@ -21,7 +21,7 @@ toml = "0.5"
 jsonrpc-core = "14"
 jsonrpc-derive = "14"
 jsonrpc-http-server = "14"
-prost = "0.5"
+prost = "0.6"
 bytes = "*"
 ws = "*"
 reqwest = { version = "0.10", features = ["blocking", "json"] }
